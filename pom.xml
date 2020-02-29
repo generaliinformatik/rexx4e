@@ -15,7 +15,7 @@
 		<hamcrest.version>2.2</hamcrest.version>
 		<equalsverifier.version>3.1.12</equalsverifier.version>
 		<maven.jacoco.plugin.version>0.8.5</maven.jacoco.plugin.version>
-	    <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
 	</properties>
 	<modules>
 		<module>de.holzem.eclipse.rexx4eclipse.target</module>
@@ -23,8 +23,79 @@
 		<module>de.holzem.eclipse.rexx4eclipse.repository</module>
 		<module>de.holzem.eclipse.rexx4eclipse.rexx</module>
 	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+			<version>${equalsverifier.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${maven.jacoco.plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<argLine>@{argLine} -Dfile.encoding=UTF8</argLine>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<argLine>@{argLine} -Dfile.encoding=UTF8</argLine>
+				</configuration>
+			</plugin>
 			<!-- tycho-maven-plugin -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
