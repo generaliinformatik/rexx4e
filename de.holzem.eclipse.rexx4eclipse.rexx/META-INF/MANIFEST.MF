@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: REXX Editor
 Bundle-SymbolicName: de.holzem.eclipse.rexx4eclipse.rexx;singleton:=true
-Bundle-Version: 0.0.1
+Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: de.holzem.eclipse.rexx4eclipse.rexx.internal.Activator
 Bundle-Vendor: Markus Holzem
 Require-Bundle: org.eclipse.ui,

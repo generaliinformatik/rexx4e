@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
 	<groupId>de.holzem.eclipse.rexx4eclipse</groupId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<artifactId>rexx4eclipse</artifactId>
   </parent>
   <artifactId>de.holzem.eclipse.rexx4eclipse.target</artifactId>

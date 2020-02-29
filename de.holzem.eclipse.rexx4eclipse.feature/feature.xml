@@ -2,7 +2,7 @@
 <feature
       id="de.holzem.eclipse.rexx4eclipse.feature"
       label="Eclipse REXX Editor Feature"
-      version="0.0.1"
+      version="0.0.1.qualifier"
       provider-name="Markus Holzem">
 
    <description url="https://github.com/holzem/rexx4eclipse">
@@ -233,7 +233,7 @@ this distribution, and is available at https://opensource.org/licenses/Apache-2.
          id="de.holzem.eclipse.rexx4eclipse.rexx"
          download-size="0"
          install-size="0"
-         version="0.0.1"
+         version="0.0.1.qualifier"
          unpack="false"/>
 
 </feature>
