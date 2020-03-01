@@ -23,6 +23,18 @@
       </editorContentTypeBinding>
    </extension>   
    <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="de.holzem.eclipse.rexx4eclipse.rexx.RexxStreamConnectionProvider"
+            id="de.holzem.eclipse.rexx4eclipse.languageserver.rexx"
+            label="de.holzem.eclipse.rexx4eclipse.languageserver.rexx">
+      </server>
+      <contentTypeMapping
+            contentType="de.holzem.eclipse.rexx4eclipse.contenttype.rexx"
+            id="de.holzem.eclipse.rexx4eclipse.languageserver.rexx">
+      </contentTypeMapping>
+   </extension>
+   <extension
          point="org.eclipse.tm4e.registry.grammars">
       <grammar
             path="./syntaxes/REXX.tmLanguage"

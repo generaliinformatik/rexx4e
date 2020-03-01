@@ -52,8 +52,9 @@ public class RexxPlugin extends AbstractUIPlugin {
 	public void stop(final BundleContext context) throws Exception
 	{
 		plugin = null;
+		// throws NullPointer Exception when Platform is shutting down
+		// logMessage(RexxMessages.REXX_PLUGIN_STOPPED);
 		super.stop(context);
-		logMessage(RexxMessages.REXX_PLUGIN_STOPPED);
 	}
 
 	public static RexxPlugin getDefault()
