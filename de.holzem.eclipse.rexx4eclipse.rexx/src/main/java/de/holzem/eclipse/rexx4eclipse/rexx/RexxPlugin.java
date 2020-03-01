@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.holzem.eclipse.rexx4eclipse.rexx.internal;
+package de.holzem.eclipse.rexx4eclipse.rexx;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
- * Activator class controls the plug-in life cycle
+ * RexxPlugin class controls the plug-in life cycle
  *
  * @author Markus Holzem
  */
-public class Activator extends AbstractUIPlugin {
+public class RexxPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "de.holzem.eclipse.rexx4eclipse.rexx"; //$NON-NLS-1$
 
 	// The shared instance
-	private static Activator plugin;
+	private static RexxPlugin plugin;
 
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public RexxPlugin() {
 	}
 
 	@Override
@@ -42,6 +45,7 @@ public class Activator extends AbstractUIPlugin {
 	{
 		super.start(context);
 		plugin = this;
+		logMessage(RexxMessages.REXX_PLUGIN_STARTED);
 	}
 
 	@Override
@@ -49,16 +53,35 @@ public class Activator extends AbstractUIPlugin {
 	{
 		plugin = null;
 		super.stop(context);
+		logMessage(RexxMessages.REXX_PLUGIN_STOPPED);
 	}
 
-	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
-	 */
-	public static Activator getDefault()
+	public static RexxPlugin getDefault()
 	{
 		return plugin;
 	}
 
+	public static String getPluginId()
+	{
+		return RexxPlugin.PLUGIN_ID;
+	}
+
+	public static void logError(final Throwable pThrowable)
+	{
+		logStatus(new Status(IStatus.ERROR, getPluginId(), RexxMessages.REXX_PLUGIN_INTERNAL_ERROR, pThrowable));
+	}
+
+	public static void logMessage(final String pMessage)
+	{
+		logStatus(new Status(IStatus.INFO, getPluginId(), pMessage));
+	}
+
+	private static void logStatus(final IStatus pStatus)
+	{
+		if (Platform.isRunning()) {
+			getDefault().getLog().log(pStatus);
+		} else {
+			System.out.println(pStatus.toString());
+		}
+	}
 }

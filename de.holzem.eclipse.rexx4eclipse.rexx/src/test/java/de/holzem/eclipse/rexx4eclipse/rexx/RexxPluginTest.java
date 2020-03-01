@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.holzem.eclipse.rexx4eclipse.rexx.internal;
+package de.holzem.eclipse.rexx4eclipse.rexx;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -42,31 +42,33 @@ import org.osgi.framework.ServiceObjects;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 
+import de.holzem.eclipse.rexx4eclipse.rexx.RexxPlugin;
+
 /**
- * ActivatorTest
+ * RexxPluginTest
  *
  * @author Markus Holzem
  */
-public class ActivatorTest {
+public class RexxPluginTest {
 
 	@Test
 	void test()
 	{
-		final Activator activator = new Activator();
+		final RexxPlugin rexxPlugin = new RexxPlugin();
 		final BundleContext ctx = new MyBundleContext();
 		try {
-			activator.start(ctx);
+			rexxPlugin.start(ctx);
 		} catch (final Exception exc) {
 			fail("unexpected exception " + exc.toString());
 		}
-		assertThat(Activator.getDefault(), is(equalTo(activator)));
+		assertThat(RexxPlugin.getDefault(), is(equalTo(rexxPlugin)));
 		try {
-			activator.stop(ctx);
+			rexxPlugin.stop(ctx);
 		} catch (final Exception exc) {
 			assertThat(exc, is(instanceOf(AssertionFailedException.class)));
+			RexxPlugin.logError(exc);
 		}
-		assertThat(Activator.getDefault(), is(nullValue()));
-
+		assertThat(RexxPlugin.getDefault(), is(nullValue()));
 	}
 
 	private class MyBundleContext implements BundleContext {
