@@ -26,11 +26,10 @@ import org.osgi.framework.BundleContext;
  *
  * @author Markus Holzem
  */
-public class RexxPlugin extends AbstractUIPlugin {
-
+public class RexxPlugin extends AbstractUIPlugin
+{
 	// The plug-in ID
 	public static final String PLUGIN_ID = "de.holzem.eclipse.rexx4eclipse.rexx"; //$NON-NLS-1$
-
 	// The shared instance
 	private static RexxPlugin plugin;
 
@@ -70,6 +69,11 @@ public class RexxPlugin extends AbstractUIPlugin {
 	public static void logError(final Throwable pThrowable)
 	{
 		logStatus(new Status(IStatus.ERROR, getPluginId(), RexxMessages.REXX_PLUGIN_INTERNAL_ERROR, pThrowable));
+	}
+
+	public static void logError(final String pMessage)
+	{
+		logStatus(new Status(IStatus.ERROR, getPluginId(), pMessage));
 	}
 
 	public static void logMessage(final String pMessage)

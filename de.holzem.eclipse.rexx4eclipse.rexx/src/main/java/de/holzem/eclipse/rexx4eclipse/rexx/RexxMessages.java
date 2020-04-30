@@ -20,7 +20,8 @@ import org.eclipse.osgi.util.NLS;
 /**
  * RexxMessages initializes the message constants from the properties file.
  */
-public class RexxMessages {// extends NLS {
+public class RexxMessages
+{// extends NLS {
 	private static final String BUNDLE_NAME = "de.holzem.eclipse.rexx4eclipse.rexx.RexxMessages";//$NON-NLS-1$
 
 	private RexxMessages() {
@@ -32,9 +33,12 @@ public class RexxMessages {// extends NLS {
 	public static String REXX_PLUGIN_INTERNAL_ERROR;
 	public static String REXX_PLUGIN_CONNECTION_STARTED;
 	public static String REXX_PLUGIN_CONNECTION_STOPPED;
-
+	public static String REXX_PLUGIN_PORT_NUMBER_ERROR;
+	public static String REXX_PLUGIN_SERVER_STARTED;
+	public static String REXX_PLUGIN_SERVER_STOPPED;
+	public static String REXX_PLUGIN_ENV_LSP4REXX_JAVA_HOME_MISSING_ERROR;
+	public static String REXX_PLUGIN_ENV_LSP4REXX_JAR_MISSING_ERROR;
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, RexxMessages.class);
 	}
-
 }
