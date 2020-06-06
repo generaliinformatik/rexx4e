@@ -45,4 +45,12 @@
             scopeName="source.rexx">
       </scopeNameContentTypeBinding>
 	</extension>
+	<extension
+          point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="de.holzem.eclipse.rexx4e.contenttype.rexx"
+            path="./language-configurations/rexx.language-configuration.json">
+      </languageConfiguration>
+   </extension>
+	
 </plugin>
