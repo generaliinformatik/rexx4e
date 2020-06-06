@@ -17,12 +17,8 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>begin</key>
-			<string>/\*</string>
-			<key>end</key>
-			<string>\*/</string>
-			<key>name</key>
-			<string>comment.rexx</string>
+			<key>include</key>
+			<string>#multilinecomment</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -87,6 +83,29 @@
 			<string>variable.rexx</string>
 		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>multilinecomment</key>
+		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>contentName</key>
+			<string>comment</string>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.rexx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#multilinecomment</string>
+					<key>name</key>
+					<string>comment</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>source.rexx</string>
 	<key>uuid</key>
@@ -117,4 +136,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Contributer
+Markus Holzem <markus@holzem.de> added nested comments
 -->
