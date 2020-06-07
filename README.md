@@ -7,6 +7,10 @@ It makes use of the following projects:
 * [Eclipse LSP4E](https://projects.eclipse.org/projects/technology.lsp4e) 
 * [Eclipse TM4E - TextMate support in the Eclipse IDE](https://projects.eclipse.org/projects/technology.tm4e) 
 
+[LSP4E](https://projects.eclipse.org/projects/technology.lsp4e) and
+[TM4E](https://projects.eclipse.org/projects/technology.tm4e) have been added
+to the Eclipse IDE beginning with Oxygen. The maven build is configured to run against Eclipse Photon (4.8)
+
 # Get started
 
 * Clone this repository
