@@ -151,9 +151,12 @@ public class RexxStreamConnectionProvider extends ProcessStreamConnectionProvide
 
 	private String getLs4RexxJava()
 	{
-		final String javaHome = System.getenv("LS4REXX_JAVA_HOME");
+		String javaHome = System.getenv("LS4REXX_JAVA_HOME");
 		if (javaHome == null) {
-			RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
+			javaHome = System.getProperty("LS4REXX_JAVA_HOME");
+			if (javaHome == null) {
+				RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
+			}
 		}
 		String java = null;
 		if (javaHome != null) {
@@ -170,9 +173,12 @@ public class RexxStreamConnectionProvider extends ProcessStreamConnectionProvide
 
 	private String getLs4RexxJar()
 	{
-		final String jar = System.getenv("LS4REXX_JAR");
+		String jar = System.getenv("LS4REXX_JAR");
 		if (jar == null) {
-			RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
+			jar = System.getProperty("LS4REXX_JAR");
+     		if (jar == null) {
+     			RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
+     		}
 		}
 		return jar;
 	}
@@ -181,7 +187,10 @@ public class RexxStreamConnectionProvider extends ProcessStreamConnectionProvide
 	{
 		String workingDirectory = System.getenv("LS4REXX_WORKING_DIRECTORY");
 		if (workingDirectory == null) {
-			workingDirectory = System.getProperty("user.dir");
+			workingDirectory = System.getProperty("LS4REXX_WORKING_DIRECTORY");
+			if (workingDirectory == null) {
+				workingDirectory = System.getProperty("user.dir");
+			}
 		}
 		return workingDirectory;
 	}
