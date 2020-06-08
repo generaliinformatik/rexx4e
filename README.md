@@ -4,12 +4,15 @@ This is a Eclipse REXX Editor based on the [Language Server Protocol](https://mi
 
 It makes use of the following projects:
    
-* [Eclipse LSP4E](https://projects.eclipse.org/projects/technology.lsp4e) 
-* [Eclipse TM4E - TextMate support in the Eclipse IDE](https://projects.eclipse.org/projects/technology.tm4e) 
+* [Eclipse lsp4e](https://projects.eclipse.org/projects/technology.lsp4e) 
+* [Eclipse tm4e - TextMate support in the Eclipse IDE](https://projects.eclipse.org/projects/technology.tm4e) 
 
-[LSP4E](https://projects.eclipse.org/projects/technology.lsp4e) and
-[TM4E](https://projects.eclipse.org/projects/technology.tm4e) have been added
+[lsp4e](https://projects.eclipse.org/projects/technology.lsp4e) and
+[tm4e](https://projects.eclipse.org/projects/technology.tm4e) have been added
 to the Eclipse IDE beginning with Oxygen. The maven build is configured to run against Eclipse Photon (4.8)
+
+It might be necessary to update the tm4e plugins from the [latest release](https://download.eclipse.org/tm4e/releases/) or  
+[snapshot](http://download.eclipse.org/tm4e/snapshots/) to make the syntax colouring available.
 
 # Get started
 
