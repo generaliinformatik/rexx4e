@@ -17,11 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.lsp4e.server.ProcessStreamConnectionProvider;
@@ -45,37 +40,23 @@ import org.eclipse.lsp4e.server.StreamConnectionProvider;
  */
 public class RexxStreamConnectionProvider extends ProcessStreamConnectionProvider implements StreamConnectionProvider
 {
-	private final int _port;
-	private final String _ls4rexx_working_directory;
-	private final String _ls4rexx_java;
-	private final String _ls4rexx_jar;
+	private final Ls4RexxSettings _ls4RexxSettings;
 	private Socket _socket;
 	private InputStream _inputStream;
 	private OutputStream _outputStream;
 
 	public RexxStreamConnectionProvider() {
-		_port = getLs4RexxPort();
-		if (_port < 0) {
-			_ls4rexx_jar = getLs4RexxJar();
-			_ls4rexx_java = getLs4RexxJava();
-			_ls4rexx_working_directory = getLs4RexxWorkingDirectory();
-			final List<String> commands = new ArrayList<String>();
-			commands.add(_ls4rexx_java);
-			commands.add("-jar");
-			commands.add(_ls4rexx_jar);
-			setCommands(commands);
-			setWorkingDirectory(_ls4rexx_working_directory);
-		} else {
-			_ls4rexx_jar = null;
-			_ls4rexx_java = null;
-			_ls4rexx_working_directory = null;
+		_ls4RexxSettings = new Ls4RexxSettings();
+		if (!_ls4RexxSettings.isSocketConnection() && _ls4RexxSettings.isValidCommand()) {
+			setCommands(_ls4RexxSettings.getStartCommands());
+			setWorkingDirectory(_ls4RexxSettings.getWorkingDirectory());
 		}
 	}
 
 	@Override
 	public InputStream getInputStream()
 	{
-		if (_port < 0) {
+		if (!_ls4RexxSettings.isSocketConnection()) {
 			return super.getInputStream();
 		} else {
 			return _inputStream;
@@ -85,7 +66,7 @@ public class RexxStreamConnectionProvider extends ProcessStreamConnectionProvide
 	@Override
 	public OutputStream getOutputStream()
 	{
-		if (_port < 0) {
+		if (!_ls4RexxSettings.isSocketConnection()) {
 			return super.getOutputStream();
 		} else {
 			return _outputStream;
@@ -95,103 +76,63 @@ public class RexxStreamConnectionProvider extends ProcessStreamConnectionProvide
 	@Override
 	public void start() throws IOException
 	{
-		if (_port < 0) {
-			super.start();
-			// java runtime needs a bit to start
-			try {
-				TimeUnit.MILLISECONDS.sleep(500);
-			} catch (final InterruptedException exc) {
-				throw new IOException(exc);
-			}
-			RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_SERVER_STARTED);
+		if (_ls4RexxSettings.isSocketConnection()) {
+			connectToServerViaSocket();
 		} else {
-			try {
-				_socket = new Socket("localhost", _port);
-				RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_CONNECTION_STARTED);
-			} catch (final IOException exc) {
-				RexxPlugin.logError(exc);
-				throw exc;
-			}
-			_inputStream = _socket.getInputStream();
-			_outputStream = _socket.getOutputStream();
+			startServerViaCommand();
 		}
 	}
 
 	@Override
 	public void stop()
 	{
-		if (_port < 0) {
-			super.stop();
-			RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_SERVER_STOPPED);
+		if (_ls4RexxSettings.isSocketConnection()) {
+			closeSocketConnection();
 		} else {
-			if (_socket != null) {
-				try {
-					_socket.close();
-				} catch (final IOException exc) {
-					RexxPlugin.logError(exc);
-				}
-			}
-			RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_CONNECTION_STOPPED);
+			stopServer();
 		}
 	}
 
-	private int getLs4RexxPort()
+	private void connectToServerViaSocket() throws IOException
 	{
-		int port = -1;
-		final String ls4rexx_port = System.getenv("LS4REXX_PORT");
-		if (ls4rexx_port != null) {
+		try {
+			_socket = new Socket("localhost", _ls4RexxSettings.getSocketPort());
+			RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_CONNECTION_STARTED);
+		} catch (final IOException exc) {
+			RexxPlugin.logError(exc);
+			throw exc;
+		}
+		_inputStream = _socket.getInputStream();
+		_outputStream = _socket.getOutputStream();
+	}
+
+	private void closeSocketConnection()
+	{
+		if (_socket != null) {
 			try {
-				port = Integer.parseInt(ls4rexx_port);
-			} catch (final NumberFormatException exc) {
-				RexxPlugin.logError(RexxMessages.REXX_PLUGIN_PORT_NUMBER_ERROR);
+				_socket.close();
+			} catch (final IOException exc) {
+				RexxPlugin.logError(exc);
 			}
 		}
-		return port;
+		RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_CONNECTION_STOPPED);
 	}
 
-	private String getLs4RexxJava()
+	private void startServerViaCommand() throws IOException
 	{
-		String javaHome = System.getenv("LS4REXX_JAVA_HOME");
-		if (javaHome == null) {
-			javaHome = System.getProperty("LS4REXX_JAVA_HOME");
-			if (javaHome == null) {
-				RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
-			}
+		super.start();
+		// java runtime needs a bit to start
+		try {
+			TimeUnit.MILLISECONDS.sleep(500);
+		} catch (final InterruptedException exc) {
+			throw new IOException(exc);
 		}
-		String java = null;
-		if (javaHome != null) {
-			final String javaExecutable = (System.getProperty("os.name").toLowerCase().contains("win") ? "java.exe"
-					: "java");
-			final Path javaPath = Paths.get(javaHome, "bin", javaExecutable);
-			if (!Files.isExecutable(javaPath)) {
-				RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
-			} else
-				java = javaPath.toString();
-		}
-		return java;
+		RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_SERVER_STARTED);
 	}
 
-	private String getLs4RexxJar()
+	private void stopServer()
 	{
-		String jar = System.getenv("LS4REXX_JAR");
-		if (jar == null) {
-			jar = System.getProperty("LS4REXX_JAR");
-     		if (jar == null) {
-     			RexxPlugin.logError(RexxMessages.REXX_PLUGIN_ENV_LS4REXX_JAVA_HOME_MISSING_ERROR);
-     		}
-		}
-		return jar;
-	}
-
-	private String getLs4RexxWorkingDirectory()
-	{
-		String workingDirectory = System.getenv("LS4REXX_WORKING_DIRECTORY");
-		if (workingDirectory == null) {
-			workingDirectory = System.getProperty("LS4REXX_WORKING_DIRECTORY");
-			if (workingDirectory == null) {
-				workingDirectory = System.getProperty("user.dir");
-			}
-		}
-		return workingDirectory;
+		super.stop();
+		RexxPlugin.logMessage(RexxMessages.REXX_PLUGIN_SERVER_STOPPED);
 	}
 }

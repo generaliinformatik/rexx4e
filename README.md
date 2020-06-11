@@ -24,7 +24,8 @@ It might be necessary to update the tm4e plugins from the [latest release](https
 # Usage
 
 You need the ls4rexx fat jar to run the editor. By default (environment variable `LS4REXX_PORT` not set or set to `-1`) 
-the language server ls4rexx is started/stopped by this plugin   
+the language server ls4rexx is started/stopped by this plugin. The following variables have to be set by either set as a property
+on the java command line or as an environment variable. A java property takes precedence over the environment variable.   
 
 * `LS4REXX_JAR` - path to the fat JAR file of ls4rexx
 * `LS4REXX_JAVA_HOME` - Java home directory to start the server
