@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.holzem.eclipse.rexx4e</groupId>
+	<groupId>de.generali.dev.eclipse.rexx4e</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 	<artifactId>rexx4e</artifactId>
 	<packaging>pom</packaging>
@@ -18,10 +18,10 @@
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
 	</properties>
 	<modules>
-		<module>de.holzem.eclipse.rexx4e.target</module>
-		<module>de.holzem.eclipse.rexx4e.feature</module>
-		<module>de.holzem.eclipse.rexx4e.repository</module>
-		<module>de.holzem.eclipse.rexx4e.editor</module>
+		<module>de.generali.dev.eclipse.rexx4e.target</module>
+		<module>de.generali.dev.eclipse.rexx4e.feature</module>
+		<module>de.generali.dev.eclipse.rexx4e.repository</module>
+		<module>de.generali.dev.eclipse.rexx4e.editor</module>
 	</modules>
 	<dependencies>
 		<dependency>
@@ -155,8 +155,8 @@
 				<configuration>
 					<target>
 						<artifact>
-							<groupId>de.holzem.eclipse.rexx4e</groupId>
-							<artifactId>de.holzem.eclipse.rexx4e.target</artifactId>
+							<groupId>de.generali.dev.eclipse.rexx4e</groupId>
+							<artifactId>de.generali.dev.eclipse.rexx4e.target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
@@ -287,15 +287,15 @@
 
 	</build>
 	<scm>
-		<url>https://github.com/holzem/rexx4e</url>
+		<url>https://github.com/generaliinformatik/rexx4e</url>
 	</scm>
 	<issueManagement>
-		<url>https://github.com/holzem/eclipse-tycho/issues</url>
+		<url>https://github.com/generaliinformatik/eclipse-tycho/issues</url>
 		<system>GitHub Issues</system>
 	</issueManagement>
 	<organization>
-		<url>https://github.com/holzem/</url>
+		<url>https://github.com/generaliinformatik/</url>
 	</organization>
-	<url>https://github.com/holzem/rexx4e</url>
+	<url>https://github.com/generaliinformatik/rexx4e</url>
 	<name>Eclipse REXX Editor</name>
 </project>

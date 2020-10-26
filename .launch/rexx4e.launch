@@ -7,7 +7,7 @@
 <setAttribute key="name.schedenig.eclipse.grepconsole.StatisticsDisabledIds"/>
 <setAttribute key="name.schedenig.eclipse.grepconsole.StatisticsEnabledIds"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/de.holzem.eclipse.rexx4e.rexx/src/test/java"/>
+<listEntry value="/de.generali.dev.eclipse.rexx4e.rexx/src/test/java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="2"/>
@@ -16,13 +16,13 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
 <listEntry value="org.eclipse.eclemma.ui.launchGroup.coverage"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=de.holzem.eclipse.rexx4e.editorrexx/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/"/>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=de.generali.dev.eclipse.rexx4e.editorrexx/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/"/>
 <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit5"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value=""/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="de.holzem.eclipse.rexx4e.editor"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="de.generali.dev.eclipse.rexx4e.editor"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea"/>
 </launchConfiguration>

@@ -1,6 +1,6 @@
 # rexx4e
 
-This is a Eclipse REXX Editor based on the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) using [ls4rexx](https://github.com/holzem/ls4rexx). 
+This is a Eclipse REXX Editor based on the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) using [ls4rexx](https://github.com/generaliinformatik/ls4rexx). 
 
 It makes use of the following projects:
    
@@ -19,7 +19,7 @@ It might be necessary to update the tm4e plugins from the [latest release](https
 * Clone this repository
 * Open the folder in your terminal / command line
 * Run `./mvnw clean verify` (OSX, Linux) or `mvnw.cmd clean verify` (Windows)
-* After successful compilation you can find an eclipse update site in `de.holzem.eclipse.rexx4e.repository/target/repository`
+* After successful compilation you can find an eclipse update site in `de.generali.dev.eclipse.rexx4e.repository/target/repository`
 
 # Usage
 
@@ -47,8 +47,8 @@ rexx4e is published under the Eclipse Public License 2.0.
 
 # Building and Contributing
 
-To build and contribute to rexx4e consult the [Contributing Guilde](https://github.com/holzem/rexx4e/blob/master/CONTRIBUTING.md)
+To build and contribute to rexx4e consult the [Contributing Guilde](https://github.com/generaliinformatik/rexx4e/blob/master/CONTRIBUTING.md)
 
 # Acknowledgements
 
-This projects makes use of third party projects. Refer to the [Acknowledgements Information](https://github.com/holzem/rexx4e/blob/master/ACKNOWLEDGEMENT.md)   
+This projects makes use of third party projects. Refer to the [Acknowledgements Information](https://github.com/generaliinformatik/rexx4e/blob/master/ACKNOWLEDGEMENT.md)   

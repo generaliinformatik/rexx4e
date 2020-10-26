@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="rex"
+            id="de.generali.dev.eclipse.rexx4e.contenttype.rexx"
+            name="REXX File"
+            priority="normal">
+      </content-type>
+      <file-association
+            content-type="de.generali.dev.eclipse.rexx4e.contenttype.rexx"
+            file-extensions="rex">
+      </file-association>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editorContentTypeBinding
+            contentTypeId="de.generali.dev.eclipse.rexx4e.contenttype.rexx"
+            editorId="org.eclipse.ui.genericeditor.GenericEditor">
+      </editorContentTypeBinding>
+   </extension>   
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="de.generali.dev.eclipse.rexx4e.editor.RexxStreamConnectionProvider"
+            id="de.generali.dev.eclipse.rexx4e.languageserver.rexx"
+            label="de.generali.dev.eclipse.rexx4e.languageserver.rexx">
+      </server>
+      <contentTypeMapping
+            contentType="de.generali.dev.eclipse.rexx4e.contenttype.rexx"
+            id="de.generali.dev.eclipse.rexx4e.languageserver.rexx">
+      </contentTypeMapping>
+   </extension>
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="./syntaxes/REXX.tmLanguage"
+            scopeName="source.rexx">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="de.generali.dev.eclipse.rexx4e.contenttype.rexx"
+            scopeName="source.rexx">
+      </scopeNameContentTypeBinding>
+	</extension>
+	<extension
+          point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="de.generali.dev.eclipse.rexx4e.contenttype.rexx"
+            path="./language-configurations/rexx.language-configuration.json">
+      </languageConfiguration>
+   </extension>
+	
+</plugin>
