@@ -116,8 +116,8 @@
       label="Master">
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        option="-Doomph.redirection.rexx"
-        value="=https://github.com/BeckerFrank/Rexx4e.setup->${git.clone.rexx4e.location|uri}/Rexx4e.setup"
+        option="-Doomph.redirection.rexx4e"
+        value="=https://raw.githubusercontent.com/BeckerFrank/rexx4e/master/rexx4e.setup->${git.clone.rexx4e.location|uri}/Rexx4e.setup"
         vm="true">
       <description>
         Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.
