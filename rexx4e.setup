@@ -38,7 +38,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="Photon"
+      defaultValue=""
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup.p2:P2Task">
@@ -97,8 +97,7 @@
   <setupTask
       xsi:type="pde:TargetPlatformTask"
       id="rexx4e.target"
-      disabled="true"
-      name="rexx4e">
+      name="rexx4e Photon">
     <description>Rexx4e Target</description>
   </setupTask>
   <setupTask
