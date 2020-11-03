@@ -2,21 +2,16 @@
 <?pde version="3.8"?>
 <target name="rexx4e Photon" sequenceNumber="18">
 <locations>
-	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+	<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 	<repository location="http://download.eclipse.org/releases/photon/201806271001"/>
 		<unit id="org.eclipse.platform.feature.group" version="4.8.0.v20180611-0656"/>
 		<unit id="org.eclipse.jdt.feature.group" version="3.14.0.v20180611-0500"/>
 		<unit id="org.eclipse.lsp4e" version="0.6.0.201805171449"/>
 		<unit id="org.eclipse.lsp4j.sdk.feature.group" version="0.4.1.v20180515-1323"/>
 	</location>
-	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+	<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<repository location="https://download.eclipse.org/tm4e/releases/0.4.1/"/>
 		<unit id="org.eclipse.tm4e.feature.feature.group" version="0.4.1.202008270629"/>
 	</location>
 </locations>
-<environment>
-<os>win32</os>
-<ws>win32</ws>
-<arch>x86_64</arch>
-</environment>
 </target>
