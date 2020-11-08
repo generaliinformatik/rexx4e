@@ -45,15 +45,26 @@
     <requirement
         name="org.projectlombok.feature.feature.group"/>
     <requirement
-        name="org.eclipse.tm4e.feature.feature.group"/>
-    <requirement
         name="org.eclipse.lsp4j.sdk.feature.group"/>
-    <repository
-        url="https://download.eclipse.org/tm4e/releases/latest/"/>
+    <requirement
+        name="org.eclipse.lsp4e.debug"/>
+    <requirement
+        name="org.eclipse.lsp4e"/>
+    <requirement
+        name="org.sf.feeling.decompiler.feature.group"/>
+    <requirement
+        name="org.sf.feeling.decompiler.jad.feature.group"
+        filter="(&amp;(|(osgi.arch=x86)(osgi.arch=x86_64))(|(osgi.os=linux)(osgi.os=macosx)(osgi.os=win32)))"/>
     <repository
         url="https://download.eclipse.org/lsp4j/updates/releases/0.9.0/"/>
     <repository
         url="https://projectlombok.org/p2"/>
+    <repository
+        url="http://download.eclipse.org/releases/photon/201806271001"/>
+    <repository
+        url="http://download.eclipse.org/lsp4e/releases/0.6.0"/>
+    <repository
+        url="https://ecd-plugin.github.io/update/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -97,6 +108,7 @@
   <setupTask
       xsi:type="pde:TargetPlatformTask"
       id="rexx4e.target"
+      disabled="true"
       name="rexx4e Photon">
     <description>Rexx4e Target</description>
   </setupTask>
@@ -111,6 +123,17 @@
   <setupTask
       xsi:type="projects:ProjectsBuildTask"
       refresh="true"/>
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+    <requirement
+        name="tm-feature.feature.group"
+        versionRange="[0.2.0.201809140810,0.2.0.201809140810]"/>
+    <requirement
+        name="org.eclipse.tm4e.ui.editor"
+        versionRange="[0.2.0.201809031154,0.2.0.201809031154]"/>
+    <repository
+        url="https://download.eclipse.org/tm4e/releases/0.2.0/"/>
+  </setupTask>
   <stream name="master"
       label="Master">
     <setupTask
