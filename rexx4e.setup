@@ -47,8 +47,12 @@
     <requirement
         name="org.sf.feeling.decompiler.jad.feature.group"
         filter="(&amp;(|(osgi.arch=x86)(osgi.arch=x86_64))(|(osgi.os=linux)(osgi.os=macosx)(osgi.os=win32)))"/>
+    <requirement
+        name="org.projectlombok.feature.feature.group"/>
     <repository
         url="https://ecd-plugin.github.io/update/"/>
+    <repository
+        url="https://projectlombok.org/p2"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
