@@ -156,7 +156,7 @@
 					<target>
 						<artifact>
 							<groupId>de.generali.dev.eclipse.rexx4e</groupId>
-							<artifactId>de.generali.dev.eclipse.rexx4e.target</artifactId>
+							<artifactId>rexx4e-photon</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>

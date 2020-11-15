@@ -110,6 +110,28 @@
   <setupTask
       xsi:type="projects:ProjectsBuildTask"
       refresh="true"/>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      targetURL="${workspace.location|uri}/ls4rexx.local/.project">
+    <content>
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+      &lt;projectDescription>
+      	&lt;name>ls4rexx.local&lt;/name>
+      	&lt;comment>&lt;/comment>
+      	&lt;projects>
+      	&lt;/projects>
+      	&lt;buildSpec>
+      	&lt;/buildSpec>
+      	&lt;natures>
+      	&lt;/natures>
+      &lt;/projectDescription>
+    </content>
+  </setupTask>
+  <setupTask
+      xsi:type="projects:ProjectsImportTask">
+    <sourceLocator
+        rootFolder="${workspace.location}"/>
+  </setupTask>
   <stream name="master"
       label="Master">
     <setupTask

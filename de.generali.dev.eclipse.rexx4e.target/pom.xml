@@ -5,6 +5,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<artifactId>rexx4e</artifactId>
   </parent>
-  <artifactId>de.generali.dev.eclipse.rexx4e.target</artifactId>
+  <artifactId>rexx4e-photon</artifactId>
   <packaging>eclipse-target-definition</packaging>
 </project>
