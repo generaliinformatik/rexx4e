@@ -96,7 +96,7 @@
   <setupTask
       xsi:type="pde:TargetPlatformTask"
       id="rexx4e.target"
-      name="rexx4e Photon">
+      name="rexx4e-photon">
     <description>Rexx4e Target</description>
   </setupTask>
   <setupTask
