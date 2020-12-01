@@ -5,6 +5,38 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<artifactId>rexx4e</artifactId>
   </parent>
-  <artifactId>rexx4e-photon</artifactId>
-  <packaging>eclipse-target-definition</packaging>
+  <artifactId>de.generali.dev.eclipse.rexx4e.target</artifactId>
+  <packaging>pom</packaging>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.3</version>
+        <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>de.generali.dev.eclipse.rexx4e.target.target</file>
+                  <type>target</type>
+                  <classifier>de.generali.dev.eclipse.rexx4e</classifier>
+                </artifact>
+                <artifact>
+                  <file>rexx4e-photon.target</file>
+                  <type>target</type>
+                  <classifier>rexx4e-photon</classifier>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
