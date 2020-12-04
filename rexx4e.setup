@@ -58,13 +58,13 @@
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.rexx4e"
-      remoteURI="https://github.com/BeckerFrank/rexx4e.git">
+      remoteURI="https://github.com/generaliinformatik/rexx4e.git">
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone.ls4rexx"
-      remoteURI="https://github.com/BeckerFrank/ls4rexx.git">
+      remoteURI="https://github.com/generaliinformatik/ls4rexx.git">
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -137,7 +137,7 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Doomph.redirection.rexx4e"
-        value="=https://raw.githubusercontent.com/BeckerFrank/rexx4e/master/rexx4e.setup->${git.clone.rexx4e.location|uri}/Rexx4e.setup"
+        value="=https://raw.githubusercontent.com/generaliinformatik/rexx4e/master/rexx4e.setup->${git.clone.rexx4e.location|uri}/Rexx4e.setup"
         vm="true">
       <description>
         Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.
