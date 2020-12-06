@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="rexx4e-photon" sequenceNumber="18">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+	<repository location="http://download.eclipse.org/releases/photon"/>
+	<unit id="org.eclipse.sdk.ide" version="0.0.0"/>
+	<unit id="org.eclipse.lsp4e" version="0.6.0.201805171449"/>
+	<unit id="org.eclipse.lsp4j.sdk.feature.group" version="0.4.1.v20180515-1323"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+	<unit id="org.eclipse.tm4e.ui.editor" version="0.2.0.201809031154"/>
+	<unit id="tm-feature.feature.group" version="0.2.0.201809140810"/>
+	<repository location="https://download.eclipse.org/tm4e/releases/0.2.0/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.projectlombok.feature.feature.group" version="1.18.16"/>
+		<repository location="https://projectlombok.org/p2"/>
+	</location>
+</locations>
+</target>
